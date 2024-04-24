@@ -1,0 +1,40 @@
+.table-container {
+    margin: 20px;
+    background: none;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-header, .table-data {
+    width: 90%;
+}
+
+.table-header-row {
+    display: flex;
+}
+
+.table-header-cell {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    background: linear-gradient(to bottom, #007bff, #0056b3);
+    color: #fff;
+}
+
+.project-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.project-link:hover {
+    text-decoration: underline;
+}
+
+.year {
+    text-align: center;
+}

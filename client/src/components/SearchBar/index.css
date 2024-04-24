@@ -1,0 +1,220 @@
+/* index.css */
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+/* Header Styles */
+.header {
+    background-color: #070606;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Search Box Styles */
+.search-box {
+    margin: 20px auto;
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd; /* Added border */
+}
+
+.search-input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    font-size: 16px;
+    outline: none;
+}
+
+.suggestions {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.suggestions li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.suggestions li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Table Styles */
+.table {
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd; /* Added border */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    display: flex;
+    justify-content: space-around;
+    height: 400px;
+    align-items: center;
+    
+    
+}
+
+.head-row td {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.head-row td:first-child {
+    border-right: 1px solid #ddd;
+}
+
+/* Slider Styles */
+.slider {
+    padding: 20px;
+    border: 1px solid #ddd; /* Added border */
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    
+}
+
+.head-row{
+
+    display: flex;
+    border-left: 0.5px solid #ddd;
+    padding: 50px;
+    
+}
+
+.head-row1{
+
+    display: block;
+    border: 0.5px solid #ddd;
+    padding: 50px;
+    justify-content: center;
+    height: 300px;
+    
+    
+
+}
+
+.slider h5 {
+    margin-bottom: 10px;
+}
+
+/* Comment Styles */
+.comment {
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border: 1px solid #ddd; /* Added border */
+}
+
+.comment h2 {
+    margin-bottom: 10px;
+}
+
+#sm{
+    height: 200px;
+}
+
+.submit-file{
+
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+.submit-file h2 {
+    margin-bottom: 10px;
+}
+
+
+#comments {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+
+.head-row2{
+    height: 200px;
+    padding: 50px;
+
+}
+
+.submit-file{
+
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border: 1px solid #ddd;
+
+}
+
+.submit-file h2 {
+    margin-bottom: 10px;
+
+}
+
+#submit-button{
+    height: 7vh;
+    width: 20vh;
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(35, 108, 209);
+    color: #fff;
+    font-weight: bold;
+    margin-left: 980px;
+}
+
+#file-upload-button{
+    background-color: red;
+}
+
+
+
+
+h3{
+    font-size: 23px;
+}
+
+
+#sm{
+    height: 300px;
+}
+
+
+
+.butt1{
+    display: flex;
+}
+
+.butt1 #butt2{
+    height: 20px;
+    align-self: center;
+    margin-left: 5px;
+}
+

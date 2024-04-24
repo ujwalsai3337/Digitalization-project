@@ -1,0 +1,39 @@
+body {
+    margin: 0px;
+}
+
+h1 {
+    color:#fff;
+}
+
+
+
+/* index.css */
+
+.nav-bar {
+    background-color:  rgb(35, 108, 209) ;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    border: 1px solid #04133c;
+    /* position: fixed; /* Position fixed to keep it fixed at the top */
+    width:200vh; /* Width set to 100% to fill the entire viewport width */
+    z-index: 999;  
+    padding: 0 20px;
+}
+
+
+
+
+h1:hover{
+    color: #164280;
+    
+}
+
+.nav-img {
+    /* margin-right: 30px; */
+    width:auto;
+    height:100px;
+    object-fit: cover;
+    
+}

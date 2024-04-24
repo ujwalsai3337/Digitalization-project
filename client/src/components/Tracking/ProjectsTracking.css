@@ -1,0 +1,93 @@
+/* ProjectsTracking.css */
+.projects-container {
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  .projects-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .projects-table th, .projects-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .projects-table th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .projects-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .projects-table tbody tr:hover {
+    background-color: #ddd;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .button-container button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .button-container button:hover {
+    background-color: #45a049;
+  }
+  
+ /* ProjectsTracking.css */
+
+
+.popup-content .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.popup-content form {
+  margin-top: 20px;
+}
+
+.popup-content label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.popup-content input[type="text"],
+.popup-content input[type="number"],
+.popup-content input[type="date"] {
+  width: calc(100% - 10px); /* Adjust width of input fields */
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.popup-content button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.popup-content button:hover {
+  background-color: #45a049;
+}
+
+.upload-files-button {
+  margin-top: 20px;
+}
