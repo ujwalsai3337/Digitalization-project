@@ -21,11 +21,13 @@ import {
 import Table from "./components/ProjectDetails/index.jsx";
 import FullDetails from "./components/ProjectDetails/FullDetails.js";
 import ProjectDetails from "./components/ProjectDetails/ProjectDetails.js";
+import EmailList from "./components/Login/EmailList.js";
 
 const App = () => {
   //New Code
 
   const data = useMemo(() => movies, [])
+  const emails = ["email1@gmail.com", "email2@gmail.com"]
 
   /** @type import('@tanstack/react-table').ColumnDef<any> */
   const columns = [
@@ -151,9 +153,11 @@ const App = () => {
               }
             />
             <Route path='/home' element={<div><Home/><br/> <FullDetails/></div>}/>
-            <Route path='/track-progress' element={<SearchBar/>}/>
+            <Route path='/assign-reviewers' element={<div><Home/><br/><EmailList emails={emails}/></div>}/>
             <Route path='/tracking' element={<div><Home/><br/><Insert/></div>}/>
             <Route path='/project-details/:projectName' element={<div><Home/><ProjectDetails /></div>} />
+            <Route path='/track-progress' element={ <SearchBar/>}/>
+            <Route path='/project-details' element={ <ProjectDetails/>}/>
           </>
         ) : (
           <Route

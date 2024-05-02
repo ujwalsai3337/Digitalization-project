@@ -5,6 +5,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 const student = require('./models/project.js');
+const User = require("./models/user"); // Import the User model
 
 mongoose.connect('mongodb+srv://keerthu:chellam2004@cluster0.cqttcna.mongodb.net/projects?retryWrites=true&w=majority&appName=Cluster0', {
     useNewUrlParser: true,
@@ -133,6 +134,28 @@ app.put('/api/projects/:projectId', async (req, res) => {
   }
 });
 
+
+app.post('/generate-password', async (req, res) => {
+  try {
+      const { username, password } = req.body;
+      let user = await User.findOne({ username }); // Check if the user already exists
+      let temp = await User.find();
+      console.log(temp);
+      console.log(user.username);
+      if (user) {
+          user.password = password;
+      } else {
+          console.log("inserted")
+          user = new User({ username, password });
+      }
+      await user.save(); // Save the user to the database
+      console.log(username, password);
+      res.status(201).json({ username, generatedPassword: password }); // Respond with the username and generated password
+  } catch (error) {
+      console.error("Error generating password:", error);
+      res.status(500).send("Internal Server Error");
+  }
+});
 
 
 app.listen(3000, async () => {

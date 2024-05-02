@@ -12,7 +12,7 @@ const Home = () => {
             <nav className='nav-bar'>
                 <h1 onClick={()=>navigate('/home')}>Home</h1>
                 <h1 onClick={()=>navigate('/analytics')}>Analytics</h1>
-                <h1 onClick={()=>navigate('/track-progress')}>Grading</h1>
+                <h1 onClick={()=>navigate('/assign-reviewers')}>Reviewers</h1>
                 <h1 onClick={()=>navigate('/tracking')}>Add Projects</h1>
                 <img className='nav-img' src={wantImage} alt="noimage"/>
             </nav>

@@ -168,7 +168,6 @@ const SearchBar = () => {
 
     return (
         <div className='progresspage'>
-            <Home />
             <div className='secondbar'>
                 <SearchBox handleSearch={handleSearch} />
             </div>
