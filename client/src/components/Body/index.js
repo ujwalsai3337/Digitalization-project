@@ -235,7 +235,7 @@ function Body({ filters }) {
         {showCharts && (<div className={`chart-container ${showCharts ? 'show' : 'hide'}`}  style={{ display: "flex", justifyContent: "space-around" }}>
           <section>
             {showCharts && (
-              <div className="chart" style={{ width: "450px", height: "450px" }}>
+              <div className="chart" style={{ width: "450px", height: "550px" }}>
                 <h2>Projects</h2>
                 <Pie data={projectPieChartData} />
               </div>
@@ -243,7 +243,7 @@ function Body({ filters }) {
           </section>
           <section>
             {showCharts && (
-              <div className="chart" style={{ width: "450px", height: "450px" }}>
+              <div className="chart" style={{ width: "450px", height: "550px" }}>
                 <h2>Students</h2>
                 <Pie data={studentPieChartData} />
               </div>
@@ -251,7 +251,7 @@ function Body({ filters }) {
           </section>
           <section>
             {showCharts && (
-              <div className="chart" style={{ width: "450px", height: "450px" }}>
+              <div className="chart" style={{ width: "450px", height: "550px" }}>
                 <h2>Amounts</h2>
                 <Pie data={amountPieChartData} />
               </div>

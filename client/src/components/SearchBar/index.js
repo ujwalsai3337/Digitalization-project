@@ -170,6 +170,7 @@ const SearchBar = () => {
         <div className='progresspage'>
             <div className='secondbar'>
                 <SearchBox handleSearch={handleSearch} />
+                
             </div>
             {selectedProject && (
                 <div className='table'>
@@ -217,7 +218,8 @@ const SearchBar = () => {
                                         value={directionMarks}
                                         min="0"
                                         max="10"
-                                        onChange={(e) => setDirectionMarks(parseInt(e.target.value))}
+                                        onChange={(e) => setDirectionMarks(parseInt(e.target.value))    
+                                        }
                                     /></td>
 
                             </div>

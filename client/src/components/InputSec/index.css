@@ -6,7 +6,7 @@
 
 .drop-input {
 
-    height:50px;
+    height:33px;
     width: 150px;
     border:1px solid black;
     border-radius: 20px;
@@ -15,12 +15,21 @@
 
 }
 
+.input-field{
+    margin:0px 0px 10px;
+    padding:8px;
+    border: none;
+}
+
+
+
 
 
 label{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 25px;
 }
 
-.drop-input{
+/* .drop-input{
     height: 33px;
-}
+} */

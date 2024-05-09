@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ProgressBox from '../Tracking/ProgressBox';
+import './ProjectDetails.css';
 
 function ProjectDetails() {
   const { projectName } = useParams();
@@ -28,11 +29,16 @@ function ProjectDetails() {
   }
 
   return (
-    <div>
+    <div className='cont'>
+    <div >
       <h2>{project.project_name}</h2>
+    
+      <div className='text'>
       <p>Amount: {project.amount}</p>
-      <p>Academic Year: {project.Start_date}</p>
+      <p>Academic Year: {project.Start_date.substring(0, 10)}</p>
+      </div>
       <ProgressBox project={project} />
+    </div>
     </div>
   );
 }

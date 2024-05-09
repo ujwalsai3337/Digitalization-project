@@ -1,6 +1,6 @@
 /* index.css */
 
-.container {
+.container1 {
     margin: 0;
     padding: 0;
     background-image: url('./ssn.jpeg');
@@ -33,12 +33,12 @@
     align-items: center;
     gap: 20px; /* Adjust the gap between form elements */
     border: 2px solid black;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
     padding: 20px;
     max-width: 800px; /* Adjust the maximum width of the form */
     width: 100%; /* Make the form width fill its container */
-    height: 280px;
+    height: 300px;
 }
 
 .login-form label {
@@ -67,4 +67,20 @@
 
 .submit-button:hover {
     background-color: #164280;
+}
+
+
+.loginbutton:hover {
+    background-color: #164280;
+}
+
+
+
+.button-box{
+    display: flex;
+    gap: 30px;
+}
+.loginbutton{
+    height: 40px;
+    width: 100%;
 }

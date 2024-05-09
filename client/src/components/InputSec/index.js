@@ -18,6 +18,7 @@ const InputSec = () => {
             try {
                 const response = await axios.get('http://localhost:3000/api/projects');
                 const projects = response.data;
+                console.log(projects)
                 const allCategories = projects.reduce((acc, project) => {
                     if (!acc.includes(project.category)) {
                         acc.push(project.category);
@@ -45,7 +46,7 @@ const InputSec = () => {
         const currentYear = new Date().getFullYear();
         const years = [];
         // Generate options for the last 100 years
-        for (let year = currentYear; year >= currentYear - 20; year--) {
+        for (let year = currentYear; year >= currentYear - 10; year--) {
             years.push(<option key={year} value={year}>{year}</option>);
         }
         return years;

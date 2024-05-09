@@ -32,7 +32,7 @@ function AdminLogin({ authenticateUser }) {
             onChange={(e) => setUsername(e.target.value)}
             required
           />
-
+          <br />
           <label htmlFor="password">Password:</label>
           <input
             type="password"
@@ -43,8 +43,9 @@ function AdminLogin({ authenticateUser }) {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-
-          <input type="submit" value="Submit" className="submit-button" />
+          <button type="submit" className="submit-button">
+            Submit
+          </button>
         </form>
       </div>
     </div>
@@ -59,9 +60,6 @@ function TeamLeaderLogin({ authenticateUser }) {
   const onSubmit = (event) => {
     event.preventDefault();
 
-    // Add your authentication logic for team leaders here
-
-    // For demo purposes, let's assume authentication is successful
     if (username === "teamleader" && password === "team123") {
       authenticateUser();
       navigate("/home");
@@ -84,7 +82,7 @@ function TeamLeaderLogin({ authenticateUser }) {
             onChange={(e) => setUsername(e.target.value)}
             required
           />
-
+          <br />
           <label htmlFor="password">Password:</label>
           <input
             type="password"
@@ -95,8 +93,9 @@ function TeamLeaderLogin({ authenticateUser }) {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-
-          <input type="submit" value="Submit" className="submit-button" />
+          <button type="submit" className="submit-button">
+            Submit
+          </button>
         </form>
       </div>
     </div>
@@ -111,9 +110,6 @@ function ReviewerLogin({ authenticateUser }) {
   const onSubmit = (event) => {
     event.preventDefault();
 
-    // Add your authentication logic for reviewers here
-
-    // For demo purposes, let's assume authentication is successful
     if (username === "reviewer" && password === "review123") {
       authenticateUser();
       navigate("/track-progress");
@@ -136,7 +132,7 @@ function ReviewerLogin({ authenticateUser }) {
             onChange={(e) => setUsername(e.target.value)}
             required
           />
-
+          <br />
           <label htmlFor="password">Password:</label>
           <input
             type="password"
@@ -147,15 +143,15 @@ function ReviewerLogin({ authenticateUser }) {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-
-          <input type="submit" value="Submit" className="submit-button" />
+          <button type="submit" className="submit-button">
+            Submit
+          </button>
         </form>
       </div>
     </div>
   );
 }
-
-function Login({authenticateUser}) {
+function Login({ authenticateUser }) {
   const [loginType, setLoginType] = useState("");
 
   const handleLogin = (type) => {
@@ -163,21 +159,41 @@ function Login({authenticateUser}) {
   };
 
   return (
-    <div className="container">
-      <div className="login-page">
-        <div>
-          <button onClick={() => handleLogin("admin")}>Admin Login</button>
-          <button onClick={() => handleLogin("teamleader")}>
+    <div className="container1">
+      <div className="login-page1">
+        <div className="button-box">
+          <button
+            id="admin"
+            style={{ backgroundColor: loginType === "admin" ? "orange" : "rgb(26, 195, 35)" }}
+            className="loginbutton"
+            onClick={() => handleLogin("admin")}
+          >
+            Admin Login
+          </button>
+          <button
+            id="teamleader"
+            style={{ backgroundColor: loginType === "teamleader" ? "orange" : "rgb(26, 195, 35)" }}
+            className="loginbutton"
+            onClick={() => handleLogin("teamleader")}
+          >
             Team Leader Login
           </button>
-          <button onClick={() => handleLogin("reviewer")}>Reviewer Login</button>
+          <button
+            id="reviewer"
+            style={{ backgroundColor: loginType === "reviewer" ? "orange" : "rgb(26, 195, 35)" }}
+            className="loginbutton"
+            onClick={() => handleLogin("reviewer")}
+          >
+            Reviewer Login
+          </button>
         </div>
-        {loginType === "admin" && <AdminLogin authenticateUser={authenticateUser}/>}
-        {loginType === "teamleader" && <TeamLeaderLogin authenticateUser={authenticateUser}/>}
-        {loginType === "reviewer" && <ReviewerLogin authenticateUser={authenticateUser}/>}
+        {loginType === "admin" && <AdminLogin authenticateUser={authenticateUser} />}
+        {loginType === "teamleader" && <TeamLeaderLogin authenticateUser={authenticateUser} />}
+        {loginType === "reviewer" && <ReviewerLogin authenticateUser={authenticateUser} />}
       </div>
     </div>
   );
 }
 
 export default Login;
+

@@ -10,7 +10,9 @@
   }
 
   .chart-container {
-    border: 1px solid black;
+    display: grid;
+    grid-template-rows: 550px 550px 550px ;
+    grid-template-columns:550px 550px 550px ;
     width: 180vh;
     height: 80vh; /* Change height to auto */
     padding: 20px;
@@ -18,12 +20,15 @@
     margin-right: 10px;
     border-radius: 10px;
     box-shadow: 0 0 0 0.2;
+    gap: 40px;
   }
   
   .chart-container1 {
-    border: 1px solid black;
+
+    grid-template-rows: 550px 550px 550px ;
+    grid-template-columns:550px 550px 550px ;
     width: 180vh;
-    height: 50vh; /* Change height to auto */
+    height: auto; /* Change height to auto */
     padding: 20px;
     margin-left: 10px;
     margin-right: 10px;
@@ -32,6 +37,7 @@
     transition: opacity 1s, transform 1.5s ease; /* Add transition for opacity and transform */
     opacity: 1; /* Initially set opacity to 0 */
     transform: translateY(10%); /* Initially move it down */
+    gap: 40px;
   }
   
   .chart-container1.show {
@@ -53,4 +59,13 @@
   .hide {
     display: none; /* Hide the element */
   }
-  
+
+  .chart {
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 600px;
+
+
+  }
+
+
