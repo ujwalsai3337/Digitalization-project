@@ -7,6 +7,11 @@ app.use(cors());
 const student = require('./models/project.js');
 const User = require("./models/user"); // Import the User model
 
+const md5 = require('md5')
+const crypto = require('crypto')
+const fs = require('fs')
+const busboy = require('busboy')
+
 mongoose.connect('mongodb+srv://keerthu:chellam2004@cluster0.cqttcna.mongodb.net/projects?retryWrites=true&w=majority&appName=Cluster0', {
     useNewUrlParser: true,
     useUnifiedTopology: true // Add this line to avoid deprecation warning
@@ -157,6 +162,61 @@ app.post('/generate-password', async (req, res) => {
   }
 });
 
+
+app.post('/file-upload', async (req, res) => {
+  try {
+      const bb = busboy({ headers: req.headers });
+
+      const tmpFilename = md5(crypto.randomUUID());
+      const filePath = './uploads/' + tmpFilename;
+
+      const fileData = {}
+
+      bb.on('file', (fieldname, file, filename, encoding, mimetype) => {
+          fileData.originalName = filename.filename
+
+          file.pipe(fs.createWriteStream(filePath));
+
+
+          file.on('close', async () => {
+              // const username = req.user;
+
+              // const user = await User.findOne({ username: username }).exec();
+
+              fileData.path = 'uploads/' + tmpFilename
+              // fileData.userId = user.id
+
+              const fileStat = fs.statSync('./uploads/' + tmpFilename);
+              fileData.size = fileStat.size
+
+              // const file = await File.create(fileData)
+
+              // res.json({ file, finalFilename: file.id });
+              res.json({ fileStat });
+          });
+
+      });
+
+      bb.on('error', (err) => {
+          console.error('Error parsing file:', err);
+          res.status(400).json({ error: 'Error parsing file' });
+      });
+
+      req.pipe(bb);
+  } catch (error) {
+      console.log(error);
+      res.status(401).json({ error: 'Bad Request' });
+  }
+})
+
+app.get('/file/:fileName',async(req,res)=>{
+  console.log(req.params.fileName)
+
+  const filename = req.params.fileName
+
+  res.download('uploads/' +filename,'test.txt')
+
+})
 
 app.listen(3000, async () => {
   console.log("Server connected...");

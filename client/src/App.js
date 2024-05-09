@@ -22,6 +22,7 @@ import Table from "./components/ProjectDetails/index.jsx";
 import FullDetails from "./components/ProjectDetails/FullDetails.js";
 import ProjectDetails from "./components/ProjectDetails/ProjectDetails.js";
 import EmailList from "./components/Login/EmailList.js";
+import TestUpload from "./components/TestUpload.js";
 
 const App = () => {
   //New Code
@@ -158,6 +159,7 @@ const App = () => {
             <Route path='/project-details/:projectName' element={<div><Home/><ProjectDetails /></div>} />
             <Route path='/track-progress' element={ <SearchBar/>}/>
             <Route path='/project-details' element={ <ProjectDetails/>}/>
+            <Route path='/test' element={ <TestUpload/>}/>
           </>
         ) : (
           <Route
