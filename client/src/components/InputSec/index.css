@@ -1,24 +1,140 @@
-    .input {
-        display: flex;
-        justify-content: space-around;
-        margin-top: 40px ;
-    }
+.input {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px ;
+}
 
 .drop-input {
 
-    height:33px;
-    width: 150px;
-    border:1px solid black;
-    border-radius: 20px;
-    text-shadow: 10px;
-    margin-left: 20px;
+height:33px;
+width: 150px;
+border:1px solid black;
+border-radius: 20px;
+text-shadow: 10px;
+margin-left: 20px;
 
 }
 
 .input-field{
-    margin:0px 0px 10px;
-    padding:8px;
-    border: none;
+margin:0px 0px 10px;
+padding:8px;
+border: none;
+}
+.details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two containers per row */
+    grid-gap: 80px; /* Gap between containers */
+    margin-top: 20px;
+    justify-content: center;
+    margin-left: 100px;
+    margin-top: 100px;
+}
+
+.details-container {
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
+    border: 1px solid #cccccc; /* Add border */
+    border-radius: 8px; /* Add border radius for rounded corners */
+    padding: 20px;
+    height: 200px; /* Increase height */
+    width: calc(65% - 10px); /* Adjust width to fit two containers in a row with some spacing */
+}
+
+.img {
+    position: absolute;
+    top: -50%; /* Half of image height */
+    right: 0; /* Align to top right */
+    width: 30%; /* Half of container width */
+    height: 60%; /* Full height of the container */
+    background-size: cover; /* Cover the entire div */
+    background-position: right top; /* Position image to top right */
+    z-index: 1; /* Place the image above the content */
+    border-radius: 20px;
+    margin-top: 70px;
+    margin-right: 20px;
+    
+}
+
+#img4{
+    background-image: url('student2.png'); /* Replace 'student.jpeg' with your image path */
+
+}
+
+#img1 {
+    background-image: url('proj.png'); /* Replace 'proj.png' with your image path */
+    background-size: cover; /* Cover the entire div */
+    background-position: center; /* Center the image horizontally and vertically */
+}
+
+
+
+#img2 {
+    background-image: url('rupp.png'); /* Replace 'proj.png' with your image path */
+    background-size: cover; /* Cover the entire div */
+    background-position: center; /* Center the image horizontally and vertically */
+
+
+}
+
+#img3{
+    background-image: url('faculty.png'); /* Replace 'student.jpeg' with your image path */
+    background-size: cover; /* Cover the entire div */
+    background-position: center; /* Center the image horizontally and vertically */
+}
+
+
+#img1, #img2, #img3, #img4 {
+    background-size: cover; /* Cover the entire div */
+    background-position: center; /* Center the image horizontally and vertically */
+    border-radius: 8px; /* Add border radius for rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Add shadow */
+    transition: transform 0.3s ease; /* Add smooth transition effect */
+}
+
+/* Add hover effect */
+#img1:hover, #img2:hover, #img3:hover, #img4:hover {
+    transform: scale(1.05); /* Increase size on hover */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+
+.image-overlay {
+    position: absolute;
+    top: -50%; /* Half of image height */
+    left: -50%; /* Half of image width */
+    width: 200%; /* Double the width to cover half inside and half outside */
+    height: 200%; /* Double the height to cover half inside and half outside */
+    z-index: -1; /* Send the image behind the content */
+    overflow: hidden;
+}
+
+.image-overlay img {
+    width: 100%; /* Make the image cover the container */
+    height: auto;
+    object-fit: cover;
+    transform: translate(50%, 50%); /* Center the image */
+}
+
+
+
+
+
+.text-container {
+    margin-top: 80px; /* Adjust according to your design */
+}
+
+.num {
+    font-size: 36px; /* Increase font size */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+
+
+.title{
+color: black;
+font-size: 34px;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 
@@ -26,10 +142,15 @@
 
 
 label{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 25px;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+font-size: 25px;
 }
 
-/* .drop-input{
-    height: 33px;
-} */
+
+.nums {
+    color: #8be306; /* Vibrant green color */
+    font-size: 70px; /* Increase font size */
+    font-weight: bold; /* Make the text bold for emphasis */
+    text-transform: uppercase; /* Convert text to uppercase for additional emphasis */
+}
+

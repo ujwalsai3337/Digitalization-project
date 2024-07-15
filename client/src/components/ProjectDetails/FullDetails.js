@@ -13,6 +13,7 @@ function FullDetails() {
             try {
                 const response = await axios.get("http://localhost:3000/api/projects");
                 setProjects(response.data);
+                console.log(projects);
             } catch (error) {
                 setError("Error fetching projects");
             } finally {

@@ -11,24 +11,6 @@ function ProgressBox(props) {
         <div className="participants">
           <div className='heading'> 
           </div>
-          <div className='stu-gui'>
-            <div className='stu'>
-            <h2>Students</h2>
-            <div className="students">
-                {project.Students.map((value, index) => (
-                    <li key={index}>{value}</li>
-                ))}
-            </div>
-            </div>
-            <div className='Gui'>
-            <h2>Guides</h2>
-            <div className="guides">
-                {project.guides.map((value, index) => (
-                    <li key={index}>{value}</li>
-                ))}
-            </div>
-            </div>
-            </div>
         </div>
         <div className='graph'>
             <Progress project={project} />

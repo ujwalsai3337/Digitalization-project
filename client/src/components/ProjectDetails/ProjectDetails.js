@@ -29,17 +29,37 @@ function ProjectDetails() {
   }
 
   return (
-    <div className='cont'>
-    <div >
+    <div className='conti'>
+    <div>
       <h2>{project.project_name}</h2>
-    
-      <div className='text'>
+    </div>
+    <div className='text'>
       <p>Amount: {project.amount}</p>
       <p>Academic Year: {project.Start_date.substring(0, 10)}</p>
+    </div>
+    <div className='stu'>
+        <h2>Students</h2>
+        <div className="students">
+            {project.Students.map((value, index) => (
+                <li key={index}>{value}</li>
+            ))}
+        </div>
+    </div>
+        
+    <div className='Gui'>
+        <h2>Guides</h2>
+        <div className="guides">
+            {project.guides.map((value, index) => (
+                <li key={index}>{value}</li>
+            ))}
       </div>
+    </div>
+    <div>
       <ProgressBox project={project} />
     </div>
     </div>
+
+  
   );
 }
 

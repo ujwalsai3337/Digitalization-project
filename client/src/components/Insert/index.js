@@ -57,6 +57,8 @@ function Insert() {
   };
 
   return (
+    <div className='total'>
+      <div className='sideimg'></div>
     <div className="insert-container">
       <form onSubmit={handleSubmit}>
         <label className="form-label">Project Name:</label>
@@ -158,6 +160,7 @@ function Insert() {
       
         <button type="submit" className="submit-button">Submit</button>
       </form>
+    </div>
     </div>
   );
 }

@@ -12,6 +12,24 @@ function Body({ filters }) {
   const [studentsPerYear, setStudentsPerYear] = useState({});
   const [amountsPerYear, setAmountsPerYear] = useState({});
   const [showCharts, setShowCharts] = useState(true); // To toggle visibility of pie charts
+    const columns = [
+        {
+            header: 'Project Name',
+            accessor: 'project_name',
+            sortable: true,
+        },
+        {
+            header: 'Amount',
+            accessor: 'amount',
+            sortable: true,
+        },
+        {
+            header: 'Academic Year',
+            accessor: 'year',
+            sortable: true,
+        },
+    ];
+
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -38,26 +56,17 @@ function Body({ filters }) {
 
   // Filter projects based on the provided filters
   const filteredProjects = projects.filter((project) => {
-    if (filters == undefined) return true;
-    const year = parseInt(filters.year.slice(-2)); // Extract last two digits of the year
-    if (project.year !== year && filters.year !== "All") return false;
+    if (!filters) return true;
+    const { year, domain, startYear, endYear } = filters;
+    const projectYear = new Date(project.Start_date).getFullYear();
 
-    if (
-      filters.domain &&
-      filters.domain !== "All" &&
-      filters.domain !== project.category
-    ) {
-      return false;
-    }
+    if (year !== "All" && project.year !== parseInt(year)) return false;
 
-    if (filters.years !== "All") {
-      const currentYear = new Date().getFullYear();
-      const projectStartYear = new Date(project.Start_date).getFullYear();
-      const yearsDifference = currentYear - projectStartYear;
-      if (yearsDifference > parseInt(filters.years)) {
-        return false;
-      }
-    }
+    if (domain !== "All" && project.category !== domain) return false;
+
+    if (startYear && projectYear < parseInt(startYear)) return false;
+
+    if (endYear && projectYear > parseInt(endYear)) return false;
 
     return true;
   });
@@ -67,14 +76,14 @@ function Body({ filters }) {
     countProjectsPerYear();
     countStudentsPerYear();
     countAmountsPerYear();
-  }, [projects]);
+  }, [projects, filters]);
 
   const countProjectsAndStudentsPerDomain = () => {
     const projectCounts = {};
     const studentCounts = {};
     const amounts = {};
 
-    projects.forEach((project) => {
+    filteredProjects.forEach((project) => {
       // Count projects per domain
       projectCounts[project.category] =
         (projectCounts[project.category] || 0) + 1;
@@ -100,7 +109,7 @@ function Body({ filters }) {
   const countProjectsPerYear = () => {
     const projectsPerYear = {};
 
-    projects.forEach((project) => {
+    filteredProjects.forEach((project) => {
       const academicYear = getAcademicYear(project.Start_date);
       projectsPerYear[academicYear] = (projectsPerYear[academicYear] || 0) + 1;
     });
@@ -111,7 +120,7 @@ function Body({ filters }) {
   const countStudentsPerYear = () => {
     const studentsPerYear = {};
 
-    projects.forEach((project) => {
+    filteredProjects.forEach((project) => {
       const academicYear = getAcademicYear(project.Start_date);
       if (project.Students && Array.isArray(project.Students)) {
         studentsPerYear[academicYear] =
@@ -125,7 +134,7 @@ function Body({ filters }) {
   const countAmountsPerYear = () => {
     const amountsPerYear = {};
 
-    projects.forEach((project) => {
+    filteredProjects.forEach((project) => {
       const academicYear = getAcademicYear(project.Start_date);
       amountsPerYear[academicYear] =
         (amountsPerYear[academicYear] || 0) + project.amount;
@@ -138,131 +147,123 @@ function Body({ filters }) {
     const date = new Date(dateString);
     const year = date.getFullYear();
     const nextYear = year + 1;
-    return `${year}-${String
-      (nextYear).slice(2)}`;
-    };
+    return `${year}-${String(nextYear).slice(2)}`;
+  };
   
-    const projectPieChartData = {
-      labels: Object.keys(projectCounts),
-      datasets: [
-        {
-          label: "Projects",
-          data: Object.values(projectCounts),
-          backgroundColor: [
-            "#59D5E0",
-            "#87A922",
-            "#FCDC2A",
-            "#F7418F",
-            "#FF204E",
-            "#6420AA",
-          ],
-        },
-      ],
-    };
-  
-    const studentPieChartData = {
-      labels: Object.keys(studentCounts),
-      datasets: [
-        {
-          label: "Students",
-          data: Object.values(studentCounts),
-          backgroundColor: [
-            "#59D5E0",
-            "#87A922",
-            "#FCDC2A",
-            "#F7418F",
-            "#FF204E",
-            "#6420AA",
-          ],
-        },
-      ],
-    };
-  
-    const amountPieChartData = {
-      labels: Object.keys(amounts),
-      datasets: [
-        {
-          label: "Amount",
-          data: Object.values(amounts),
-          backgroundColor: [
-            "#59D5E0",
-            "#87A922",
-            "#FCDC2A",
-            "#F7418F",
-            "#FF204E",
-            "#6420AA",
-          ],
-        },
-      ],
-    };
-  
-    const projectsPerYearChartData = {
-      labels: Object.keys(projectsPerYear),
-      datasets: [
-        {
-          label: "No. of Projects",
-          data: Object.values(projectsPerYear),
-          backgroundColor: "#59D5E0",
-        },
-      ],
-    };
-  
-    const studentsPerYearChartData = {
-      labels: Object.keys(studentsPerYear),
-      datasets: [
-        {
-          label: "No. of Students",
-          data: Object.values(studentsPerYear),
-          backgroundColor: "#87A922",
-        },
-      ],
-    };
-  
-    const amountsPerYearChartData = {
-      labels: Object.keys(amountsPerYear),
-      datasets: [
-        {
-          label: "Amount",
-          data: Object.values(amountsPerYear),
-          backgroundColor: "#FCDC2A",
-        },
-      ],
-    };
-  
-    return (
-      <div className="big" style={{ marginTop:'100px'}}>
+  const projectPieChartData = {
+    labels: Object.keys(projectCounts),
+    datasets: [
+      {
+        label: "Projects",
+        data: Object.values(projectCounts),
+        backgroundColor: [
+          "#59D5E0",
+          "#87A922",
+          "#FCDC2A",
+          "#F7418F",
+          "#FF204E",
+          "#6420AA",
+        ],
+      },
+    ],
+  };
+
+  const studentPieChartData = {
+    labels: Object.keys(studentCounts),
+    datasets: [
+      {
+        label: "Students",
+        data: Object.values(studentCounts),
+        backgroundColor: [
+          "#59D5E0",
+          "#87A922",
+          "#FCDC2A",
+          "#F7418F",
+          "#FF204E",
+          "#6420AA",
+        ],
+      },
+    ],
+  };
+
+  const amountPieChartData = {
+    labels: Object.keys(amounts),
+    datasets: [
+      {
+        label: "Amount",
+        data: Object.values(amounts),
+        backgroundColor: [
+          "#59D5E0",
+          "#87A922",
+          "#FCDC2A",
+          "#F7418F",
+          "#FF204E",
+          "#6420AA",
+        ],
+      },
+    ],
+  };
+
+  const projectsPerYearChartData = {
+    labels: Object.keys(projectsPerYear),
+    datasets: [
+      {
+        label: "No. of Projects",
+        data: Object.values(projectsPerYear),
+        backgroundColor: "#59D5E0",
+      },
+    ],
+  };
+
+  const studentsPerYearChartData = {
+    labels: Object.keys(studentsPerYear),
+    datasets: [
+      {
+        label: "No. of Students",
+        data: Object.values(studentsPerYear),
+        backgroundColor: "#87A922",
+      },
+    ],
+  };
+
+  const amountsPerYearChartData = {
+    labels: Object.keys(amountsPerYear),
+    datasets: [
+      {
+        label: "Amount",
+        data: Object.values(amountsPerYear),
+        backgroundColor: "#FCDC2A",
+      },
+    ],
+  };
+
+  return (
+    <div className="big" style={{ marginTop:'100px'}}>
       <div className="main">
-        {showCharts && (<div className={`chart-container ${showCharts ? 'show' : 'hide'}`}  style={{ display: "flex", justifyContent: "space-around" }}>
-          <section>
-            {showCharts && (
+        {showCharts && (
+          <div className={`chart-container ${showCharts ? 'show' : 'hide'}`} style={{ display: "flex", justifyContent: "space-around" }}>
+            <section>
               <div className="chart" style={{ width: "450px", height: "550px" }}>
                 <h2>Projects</h2>
                 <Pie data={projectPieChartData} />
               </div>
-            )}
-          </section>
-          <section>
-            {showCharts && (
+            </section>
+            <section>
               <div className="chart" style={{ width: "450px", height: "550px" }}>
                 <h2>Students</h2>
                 <Pie data={studentPieChartData} />
               </div>
-            )}
-          </section>
-          <section>
-            {showCharts && (
+            </section>
+            <section>
               <div className="chart" style={{ width: "450px", height: "550px" }}>
                 <h2>Amounts</h2>
                 <Pie data={amountPieChartData} />
               </div>
-
-            )}
-            
-          </section>
-          </div>)}
-          <div className={`chart-container1 ${!showCharts ? 'show' : ''}`} style ={{display: "flex", justifyContent: "space-between",  marginTop:'150px'}}>
+            </section>
+          </div>
+        )}
+        <div className={`chart-container1 ${!showCharts ? 'show' : ''}`} style={{ display: "flex", justifyContent: "space-between", marginTop:'150px' }}>
           <section>
-          
             <div className="chart" style={{ width: "450px", height: "450px" }}>
               <h2>No. of Projects per Year</h2>
               <Bar
@@ -321,14 +322,11 @@ function Body({ filters }) {
                 }}
               />
             </div>
-            
           </section>
         </div>
-    
       </div>
-       </div>
-       
-    );
-  }
-  
-  export default Body;
+    </div>
+  );
+}
+
+export default Body;
